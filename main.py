@@ -22,7 +22,7 @@ table_choice = 1
 def add_to_table(deck):
     front = input("Enter front of card: ")
     back = input("Enter back of card: ")
-    card_data = (front, back, 3)
+    card_data = (front, back, 3) # Difficulty 3 - new/hard, 1 - easy/skip
     add_card(card_data, deck)
 
 add_to_table("cards")

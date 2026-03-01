@@ -1,0 +1,1 @@
+This app uses Python and SQL to create and modify flashcard decks, add flashcards to a chosen deck, then use the flashcards. Currently not functional.

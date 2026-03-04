@@ -46,3 +46,5 @@ def remove_deck(deck):
             return f"Deck {deck} was deleted successfully"
         except Exception as e:
             return f"Error occured: {e}"
+        
+add_deck("cards")

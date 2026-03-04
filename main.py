@@ -17,7 +17,7 @@ def pick_table():
     table_choice = int(input("Enter the deck you would like to use: "))
     return table_list[table_choice-1]
 
-deck = "cards"
+deck = "cards" # Temporary, remove after finish
 
 # Start study session
 def run_study_session(card_list, deck):

@@ -9,7 +9,7 @@ def get_decks():
         tables = cursor.fetchall()
         return tables
     
-# Add deck
+# Add table (deck) to database
 def add_deck(deck):
     with get_connection() as conn:
         cursor = conn.cursor()
@@ -32,7 +32,7 @@ def add_deck(deck):
         except Exception as e:
             return f"Error occured: {e}"
 
-# Remove deck
+# Remove (table) deck from database
 def remove_deck(deck):
     with get_connection() as conn:
         cursor = conn.cursor()
@@ -47,4 +47,3 @@ def remove_deck(deck):
         except Exception as e:
             return f"Error occured: {e}"
         
-add_deck("cards")

@@ -22,9 +22,8 @@ class Flashcard:
     def flip(self):
         self.is_flipped = not self.is_flipped
 
-    # Update difficulty
+    # Update difficulty to 0 in the table if user got answer correct
     def update_difficulty(self, deck, known=True):
-        # Put difficulty to 0 if user knew answer
         if known:
             self.difficulty = 0
             with get_connection() as conn:
@@ -33,15 +32,14 @@ class Flashcard:
                 cursor.execute(query, (self.difficulty, self.card_id))
                 conn.commit()
     
-    # Print card
-    def __str__(self):
-        return f"Card: {self.front} ({self.back})| Difficulty: {self.difficulty}"
-    
-    # Return card as tuple
+    # Return card object as tuple to use as parameter in add_card
     def get_object(self):
         return (self.front, self.back, self.difficulty)
+    
+    def __str__(self):
+        return f"Card: {self.front} ({self.back})| Difficulty: {self.difficulty}"
 
-# Add card
+# Take flashcard object and add it to table
 def add_card(card_obj, deck):
     with get_connection() as conn:
         cursor = conn.cursor()
@@ -49,7 +47,7 @@ def add_card(card_obj, deck):
         cursor.execute(query, card_obj)
         conn.commit()
 
-# Remove card
+# Remove card from table
 def remove_card(card_front, deck):
     with get_connection() as conn:
         cursor = conn.cursor()
@@ -57,7 +55,7 @@ def remove_card(card_front, deck):
         cursor.execute(query, (card_front,))
         conn.commit()
 
-# Get all cards and return as Flashcard object
+# Return all cards in table as list of Flashcards objects
 def get_all_cards(deck):
     with get_connection() as conn:
         cursor = conn.cursor()
